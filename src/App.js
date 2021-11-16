@@ -1,24 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
+
+
+
+//Thư viện giúp chuyển hướng trang ở các file không phải là component
+import {createBrowserHistory} from 'history';
+import Loading from './components/Loading/Loading';
+import HomeTemplate from './templates/HomeTemplate/HomeTemplate';
+import Home from './pages/Home/Home';
+export const history = createBrowserHistory();
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history ={history}>
+      {/* <Loading/> */}
+
+      <Switch>
+          <HomeTemplate exact path ="/" Component = {Home}/>
+
+      </Switch>
+  
+  
+   
+  </Router>
   );
 }
 
